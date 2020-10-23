@@ -52,6 +52,7 @@ pub mod mapping;
 pub mod metrics;
 pub(crate) mod pipeline;
 pub mod region;
+pub mod remap;
 pub mod serde;
 pub mod service;
 pub mod shutdown;
