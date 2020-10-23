@@ -482,6 +482,10 @@ impl remap::Object for Event {
         Ok(Some(value.clone().into()))
     }
 
+    fn paths(&self) -> Vec<String> {
+        self.as_log().keys().collect()
+    }
+
     fn remove(&mut self, path: &str, compact: bool) {
         self.as_mut_log().remove_prune(path, compact);
     }
