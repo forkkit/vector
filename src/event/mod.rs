@@ -413,6 +413,7 @@ impl From<Metric> for Event {
 }
 
 impl remap_lang::Object for Event {
+    // TODO: replace this with `Lookup`, once that lands.
     fn insert(&mut self, path: &[Vec<String>], value: remap_lang::Value) -> Result<(), String> {
         let path_str = path
             .iter()
@@ -429,7 +430,13 @@ impl remap_lang::Object for Event {
         Ok(())
     }
 
+    // TODO: replace this with `Lookup`, once that lands.
     fn find(&self, path: &[Vec<String>]) -> Result<Option<remap_lang::Value>, String> {
+        let path = path
+            .iter()
+            .map(|c| c.iter().map(|p| p.replace(".", "\\.")).collect::<Vec<_>>())
+            .collect::<Vec<_>>();
+
         // Event.as_log returns a LogEvent struct rather than a naked
         // IndexMap<_, Value>, which means specifically for the first item in
         // the path we need to manually call .get.
