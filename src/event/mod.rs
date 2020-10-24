@@ -412,8 +412,9 @@ impl From<Metric> for Event {
     }
 }
 
+// TODO(jean): add tests
 impl remap::Object for Event {
-    // TODO: replace this with `Lookup`, once that lands.
+    // TODO(jean): replace this with `Lookup`, once that lands.
     fn insert(&mut self, path: &[Vec<String>], value: remap::Value) -> Result<(), String> {
         let path_str = path
             .iter()
@@ -430,7 +431,7 @@ impl remap::Object for Event {
         Ok(())
     }
 
-    // TODO: replace this with `Lookup`, once that lands.
+    // TODO(jean): replace this with `Lookup`, once that lands.
     fn find(&self, path: &[Vec<String>]) -> Result<Option<remap::Value>, String> {
         let path = path
             .iter()
