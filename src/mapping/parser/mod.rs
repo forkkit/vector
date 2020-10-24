@@ -547,7 +547,7 @@ mod tests {
     use crate::mapping::query::function::{
         ContainsFn, FormatTimestampFn, Md5Fn, NowFn, ParseDurationFn, ParseJsonFn,
         ParseTimestampFn, Sha1Fn, Sha2Fn, Sha3Fn, SliceFn, SplitFn, StripAnsiEscapeCodesFn,
-        StripWhitespaceFn, TokenizeFn, TruncateFn, UuidV4Fn,
+        StripWhitespaceFn, TokenizeFn, TruncateFn,
     };
 
     #[test]
@@ -1093,13 +1093,6 @@ mod tests {
                     "bar".into(),
                     Box::new(QueryPath::from("baz")),
                     Some(Box::new(Literal::from(Value::Boolean(true)))),
-                ))]),
-            ),
-            (
-                ".foo = uuid_v4()",
-                Mapping::new(vec![Box::new(Assignment::new(
-                    "foo".to_string(),
-                    Box::new(UuidV4Fn::new()),
                 ))]),
             ),
             (
