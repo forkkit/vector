@@ -544,7 +544,7 @@ pub fn parse(input: &str) -> Result<Mapping> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::mapping::query::function::{SplitFn, StripAnsiEscapeCodesFn};
+    use crate::mapping::query::function::SplitFn;
 
     #[test]
     fn check_parser_errors() {
@@ -994,15 +994,6 @@ mod tests {
                     "bar".into(),
                     Box::new(QueryPath::from("baz")),
                     Some(Box::new(Literal::from(Value::Boolean(true)))),
-                ))]),
-            ),
-            (
-                ".foo = strip_ansi_escape_codes(.foo)",
-                Mapping::new(vec![Box::new(Assignment::new(
-                    "foo".to_string(),
-                    Box::new(StripAnsiEscapeCodesFn::new(Box::new(QueryPath::from(
-                        "foo",
-                    )))),
                 ))]),
             ),
             (
