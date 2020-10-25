@@ -546,7 +546,7 @@ mod tests {
     use super::*;
     use crate::mapping::query::function::{
         ParseDurationFn, ParseJsonFn, ParseTimestampFn, Sha2Fn, Sha3Fn, SplitFn,
-        StripAnsiEscapeCodesFn, StripWhitespaceFn, TokenizeFn, TruncateFn,
+        StripAnsiEscapeCodesFn, StripWhitespaceFn, TruncateFn,
     };
 
     #[test]
@@ -1071,13 +1071,6 @@ mod tests {
                     "bar".into(),
                     Box::new(QueryPath::from("baz")),
                     Some(Box::new(Literal::from(Value::Boolean(true)))),
-                ))]),
-            ),
-            (
-                ".foo = tokenize(.foo)",
-                Mapping::new(vec![Box::new(Assignment::new(
-                    "foo".to_string(),
-                    Box::new(TokenizeFn::new(Box::new(QueryPath::from("foo")))),
                 ))]),
             ),
             (
